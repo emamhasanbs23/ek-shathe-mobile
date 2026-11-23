@@ -1,0 +1,18 @@
+include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - macos/**
+    - linux/**
+    - '**/*.g.dart'
+    - '**/*.freezed.dart'
+    - '**/*.mapper.dart'
+    - lib/l10n/generated/**
+
+linter:
+  rules:
+    public_member_api_docs: false
