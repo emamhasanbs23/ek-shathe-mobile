@@ -1,19 +1,12 @@
-import 'dart:async';
-import 'dart:io';
-
 import 'package:ek_shathe_mobile/core/connectivity/connectivity_service.dart';
 import 'package:ek_shathe_mobile/core/error/failures.dart';
 import 'package:ek_shathe_mobile/core/network/api/config_api.dart';
 import 'package:ek_shathe_mobile/core/network/dio_client.dart';
 import 'package:ek_shathe_mobile/core/storage/secure_storage_service.dart';
 import 'package:ek_shathe_mobile/features/auth/presentation/riverpod/auth_providers.dart';
-import 'package:ek_shathe_mobile/features/splash/data/models/app_update_response.dart';
 import 'package:ek_shathe_mobile/features/splash/data/repositories/splash_repository_impl.dart';
 import 'package:ek_shathe_mobile/features/splash/domain/repositories/splash_repository.dart';
 import 'package:ek_shathe_mobile/features/splash/presentation/riverpod/splash_state.dart';
-import 'package:flutter/foundation.dart';
-import 'package:fpdart/fpdart.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 export 'splash_state.dart';
@@ -35,8 +28,7 @@ SplashRepository splashRepository(Ref ref) {
 
 @Riverpod(keepAlive: true)
 class SplashController extends _$SplashController {
-  static const _introDuration = Duration(milliseconds: 700);
-  static const _userFetchDelay = Duration(milliseconds: 500);
+  static const _holdDuration = Duration(milliseconds: 600);
 
   @override
   SplashState build() => const SplashIntro();
@@ -45,6 +37,7 @@ class SplashController extends _$SplashController {
 
   Future<void> retry() => _run();
 
+  /// Kept for update-dialog wiring; config/update check is deferred for now.
   Future<void> dismissOptionalUpdate() async {
     await ref.read(splashRepositoryProvider).markOptionalUpdateDialogShown();
     await _bootstrapSession();
@@ -52,18 +45,13 @@ class SplashController extends _$SplashController {
 
   Future<void> _run() async {
     state = const SplashIntro();
-    await Future<void>.delayed(_introDuration);
+    await Future<void>.delayed(_holdDuration);
     await _bootstrap();
   }
 
   Future<void> _bootstrap() async {
     state = const SplashLoading();
-
-    if (!await _ensureOnline()) return;
-
-    final canContinue = await _handleAppUpdate();
-    if (!canContinue) return;
-
+    // Config / app-update API is deferred — splash only restores session.
     await _bootstrapSession();
   }
 
@@ -76,56 +64,7 @@ class SplashController extends _$SplashController {
     return true;
   }
 
-  Future<bool> _handleAppUpdate() async {
-    final packageInfo = await PackageInfo.fromPlatform();
-    final buildNumber = int.tryParse(packageInfo.buildNumber) ?? 1;
-    final platform = !kIsWeb && Platform.isIOS ? 'ios' : 'android';
-
-    final result = await ref
-        .read(splashRepositoryProvider)
-        .checkAppUpdate(platform: platform, buildNumber: buildNumber);
-
-    switch (result) {
-      case Left(:final value):
-        if (value is NetworkFailure || value is NoConnectionFailure) {
-          state = const SplashNoInternet();
-        } else {
-          state = const SplashError();
-        }
-        return false;
-      case Right(:final value):
-        final update = value;
-        if (update == null) return true;
-
-        switch (update.updateStatus) {
-          case AppUpdateData.statusForce:
-            state = SplashForceUpdate(update);
-            return false;
-          case AppUpdateData.statusOptional:
-            unawaited(_maybeShowOptionalUpdate(update));
-            return false;
-          default:
-            return true;
-        }
-    }
-  }
-
-  Future<void> _maybeShowOptionalUpdate(AppUpdateData update) async {
-    final shouldShow = await ref
-        .read(splashRepositoryProvider)
-        .shouldShowOptionalUpdateDialog();
-    if (shouldShow) {
-      state = SplashOptionalUpdate(update);
-      return;
-    }
-    await _bootstrapSession();
-  }
-
   Future<void> _bootstrapSession() async {
-    if (!await _ensureOnline()) return;
-
-    state = const SplashLoading();
-
     final isAuthenticated = await ref
         .read(authRepositoryProvider)
         .isAuthenticated();
@@ -136,7 +75,9 @@ class SplashController extends _$SplashController {
       return;
     }
 
-    await Future<void>.delayed(_userFetchDelay);
+    if (!await _ensureOnline()) return;
+
+    state = const SplashLoading();
 
     final userResult = await ref.read(getCurrentUserUseCaseProvider).call();
     userResult.fold(

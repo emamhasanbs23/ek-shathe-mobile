@@ -1,7 +1,14 @@
 /// Central asset paths declared in pubspec.yaml.
 abstract final class AppAssets {
-  static const branding = 'assets/branding/';
-  static const appIcon = '${branding}ic_app_icon_new.png';
-  static const appIconSplash = '${branding}ic_app_icon_splash.png';
-  static const appLogo = '${branding}ic_app_logo_new.png';
+  static const String branding = 'assets/branding/';
+  static const String appLogo =
+      '${branding}ek_shathe_full_logo_transparent.png';
+  static const String appSymbol =
+      '${branding}ek_shathe_symbol_transparent_1024.png';
+
+  /// Prefer [appSymbol] for compact icon slots (splash top mark).
+  static const String appIcon = appSymbol;
+
+  /// Prefer [appLogo] for full wordmark.
+  static const String appIconSplash = appLogo;
 }

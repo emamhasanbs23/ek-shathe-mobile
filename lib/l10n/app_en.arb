@@ -15,7 +15,7 @@
   "errorRateLimit": "Too many requests. Please wait a moment.",
   "errorCancelled": "Request was cancelled.",
   "errorSerialization": "Failed to process response. Please try again.",
-  "errorInvalidCredentials": "Invalid username or password",
+  "errorInvalidCredentials": "Invalid email or password",
   "errorRequestFailed": "Request failed. Please try again.",
   "errorNoRefreshToken": "Your session has expired. Please sign in again.",
   "errorLoginFailed": "Sign in failed. Please try again.",
@@ -25,12 +25,10 @@
   "connectivityOffline": "You are offline",
   "connectivityRetry": "Retry",
   "loginTitle": "Sign in",
-  "loginUsernameLabel": "Email or username",
   "loginPasswordLabel": "Password",
-  "loginUsernameRequired": "Enter your email or username",
   "loginPasswordRequired": "Enter your password",
   "loginSubmit": "Sign in",
-  "loginInvalidCredentials": "Invalid username or password",
+  "loginInvalidCredentials": "Invalid email or password",
   "homeTitle": "Home",
   "homeWelcome": "Welcome",
   "logoutAction": "Sign out",
@@ -46,5 +44,24 @@
   "splashUpdateAvailableTitle": "Update Available",
   "splashUpdateAvailableMessage": "A new version of Ek-Shathe is available. Please update to the latest version now.",
   "splashUpdateAction": "Update",
-  "splashLaterAction": "Later"
+  "splashLaterAction": "Later",
+  "loginEmailLabel": "Email",
+  "@loginEmailLabel": {
+    "description": "Email field label on login/register"
+  },
+  "loginEmailRequired": "Enter your email",
+  "@loginEmailRequired": {
+    "description": "Email required validation"
+  },
+  "loginCreateAccount": "Create account",
+  "@loginCreateAccount": {
+    "description": "Link from login to register"
+  },
+  "registerTitle": "Create account",
+  "registerNameLabel": "Name",
+  "registerNameRequired": "Enter your name (at least 2 characters)",
+  "registerPasswordMin": "Password must be at least 8 characters",
+  "registerSubmit": "Sign up",
+  "registerHaveAccount": "Already have an account? Sign in",
+  "registerSuccess": "Account created. Please sign in."
 }

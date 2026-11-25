@@ -5,21 +5,20 @@ part 'api_envelope.g.dart';
 
 /// Implemented by feature DTOs that mirror the Ek-Shathe wire envelope.
 abstract interface class ApiResponse {
-  int? get code;
+  bool? get success;
   String? get message;
-  bool? get error;
 }
 
 /// Ek-Shathe wire envelope shared by success and error responses.
 ///
-/// Success: `{ message, error: false, code, results: { ... } }`
-/// Error:   `{ message, error: true, code }` (no `results`)
+/// Success: `{ success: true, data: { ... }, message? }`
+/// Error:   `{ success: false, message, errors? }`
 @freezed
 abstract class ApiEnvelope with _$ApiEnvelope implements ApiResponse {
   const factory ApiEnvelope({
-    int? code,
+    bool? success,
     String? message,
-    bool? error,
+    @Default([]) List<dynamic> errors,
   }) = _ApiEnvelope;
 
   factory ApiEnvelope.fromJson(Map<String, dynamic> json) =>

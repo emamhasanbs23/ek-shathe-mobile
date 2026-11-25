@@ -47,7 +47,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Failed to process response. Please try again.';
 
   @override
-  String get errorInvalidCredentials => 'Invalid username or password';
+  String get errorInvalidCredentials => 'Invalid email or password';
 
   @override
   String get errorRequestFailed => 'Request failed. Please try again.';
@@ -81,13 +81,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginTitle => 'Sign in';
 
   @override
-  String get loginUsernameLabel => 'Email or username';
-
-  @override
   String get loginPasswordLabel => 'Password';
-
-  @override
-  String get loginUsernameRequired => 'Enter your email or username';
 
   @override
   String get loginPasswordRequired => 'Enter your password';
@@ -96,7 +90,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginSubmit => 'Sign in';
 
   @override
-  String get loginInvalidCredentials => 'Invalid username or password';
+  String get loginInvalidCredentials => 'Invalid email or password';
 
   @override
   String get homeTitle => 'Home';
@@ -148,4 +142,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get splashLaterAction => 'Later';
+
+  @override
+  String get loginEmailLabel => 'Email';
+
+  @override
+  String get loginEmailRequired => 'Enter your email';
+
+  @override
+  String get loginCreateAccount => 'Create account';
+
+  @override
+  String get registerTitle => 'Create account';
+
+  @override
+  String get registerNameLabel => 'Name';
+
+  @override
+  String get registerNameRequired => 'Enter your name (at least 2 characters)';
+
+  @override
+  String get registerPasswordMin => 'Password must be at least 8 characters';
+
+  @override
+  String get registerSubmit => 'Sign up';
+
+  @override
+  String get registerHaveAccount => 'Already have an account? Sign in';
+
+  @override
+  String get registerSuccess => 'Account created. Please sign in.';
 }

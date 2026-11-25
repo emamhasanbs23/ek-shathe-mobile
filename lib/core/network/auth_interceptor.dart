@@ -8,7 +8,7 @@ import 'package:ek_shathe_mobile/features/auth/domain/repositories/auth_reposito
 /// recovers from expired tokens by trading the stored refresh token for a
 /// fresh access token, then retrying the original request once.
 ///
-/// Uses `x-auth-token` (not Bearer) and `Accept-Language` headers.
+/// Uses `Authorization: Bearer` and `Accept-Language` headers.
 class AuthInterceptor extends Interceptor {
   AuthInterceptor(
     this._dio,
@@ -23,7 +23,7 @@ class AuthInterceptor extends Interceptor {
   /// Used by the refresh-token endpoint so it does not send the expired token.
   static const String skipAuthKey = '_skip_auth';
 
-  static const _authTokenHeader = 'x-auth-token';
+  static const _authHeader = 'Authorization';
   static const _acceptLanguageHeader = 'Accept-Language';
 
   final Dio _dio;
@@ -42,10 +42,10 @@ class AuthInterceptor extends Interceptor {
     options.headers[_acceptLanguageHeader] = language;
 
     final skipAuth = options.extra[skipAuthKey] == true;
-    if (!skipAuth && options.headers[_authTokenHeader] == null) {
+    if (!skipAuth && options.headers[_authHeader] == null) {
       final token = await _storage.read(StorageKeys.authToken);
       if (token != null && token.isNotEmpty) {
-        options.headers[_authTokenHeader] = token;
+        options.headers[_authHeader] = 'Bearer $token';
       }
     }
 
@@ -85,7 +85,7 @@ class AuthInterceptor extends Interceptor {
 
     final language = await _readLanguage();
     final retried = err.requestOptions
-      ..headers[_authTokenHeader] = refreshed
+      ..headers[_authHeader] = 'Bearer $refreshed'
       ..headers[_acceptLanguageHeader] = language
       ..extra[_retryFlagKey] = true;
 

@@ -14,19 +14,18 @@ Future<T> guard<T>(String tag, Future<T> Function() call) async {
   }
 }
 
-/// Like `guard`, but also maps `error: true` envelope responses to `Failure`.
+/// Like `guard`, but also maps `success: false` envelope responses to Failure.
 ///
-/// Repositories catch `Failure` and return `Left(failure)` — no per-call
-/// `failureFromResponseFields` boilerplate.
+/// Repositories catch Failure and return Left(failure).
+/// No per-call boilerplate.
 Future<R> guardApi<R extends ApiResponse>(
   String tag,
   Future<R> Function() call,
 ) async {
   final response = await guard(tag, call);
-  final envelopeFailure = failureFromResponseFields(
-    error: response.error,
+  final envelopeFailure = failureFromSuccessFlag(
+    success: response.success,
     message: response.message,
-    code: response.code,
   );
   if (envelopeFailure != null) {
     throw envelopeFailure;

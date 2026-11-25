@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 /// Supported build flavors.
 ///
 /// Each flavor points at a different backend, has a different display name,
@@ -87,12 +89,23 @@ class FlavorConfig {
     final defaults = _defaultsFor(flavor);
     return FlavorConfig(
       flavor: flavor,
-      baseUrl: Env.baseUrl ?? defaults.baseUrl,
+      baseUrl: Env.baseUrl ?? _devAwareBaseUrl(flavor, defaults.baseUrl),
       pagesUrl: Env.pagesUrl ?? defaults.pagesUrl,
       cloudFrontUrl: Env.cloudFrontUrl ?? defaults.cloudFrontUrl,
       appName: Env.appName ?? defaults.appName,
       enableDioLogging: Env.dioLogging ?? defaults.enableDioLogging,
     );
+  }
+
+  /// Android emulator cannot reach the host via `localhost`; use `10.0.2.2`.
+  /// iOS simulator / desktop keep `localhost`. Physical Android devices should
+  /// pass `--dart-define=BASE_URL=http://<lan-ip>:5050/`.
+  static String _devAwareBaseUrl(Flavor flavor, String fallback) {
+    if (flavor != Flavor.dev) return fallback;
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      return 'http://127.0.0.1:5050/';
+    }
+    return fallback;
   }
 
   final Flavor flavor;
@@ -106,9 +119,9 @@ class FlavorConfig {
 
   static const FlavorConfig _devDefaults = FlavorConfig(
     flavor: Flavor.dev,
-    baseUrl: 'http://localhost:5000/',
-    pagesUrl: 'http://localhost:5000/',
-    cloudFrontUrl: 'http://localhost:5000/',
+    baseUrl: 'http://127.0.0.1:5050/',
+    pagesUrl: 'http://127.0.0.1:5050/',
+    cloudFrontUrl: 'http://127.0.0.1:5050/',
     appName: 'Ek-Shathe (Dev)',
     enableDioLogging: true,
   );

@@ -1,4 +1,5 @@
 import 'package:ek_shathe_mobile/core/theme/app_colors.dart';
+import 'package:ek_shathe_mobile/core/theme/app_palette.dart';
 import 'package:ek_shathe_mobile/core/theme/app_size.dart';
 import 'package:ek_shathe_mobile/core/theme/app_text_styles.dart';
 import 'package:material_ui/material_ui.dart';
@@ -19,7 +20,7 @@ class AppTheme {
           : Brightness.dark,
       primary: colors.primary,
       onPrimary: colors.onPrimary,
-      secondary: colors.info,
+      secondary: AppPalette.accent,
       onSecondary: colors.onPrimary,
       error: colors.error,
       onError: colors.onPrimary,

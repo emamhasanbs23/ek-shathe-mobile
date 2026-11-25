@@ -40,7 +40,7 @@ class AppColors extends ThemeExtension<AppColors> {
 
   static const dark = AppColors(
     primary: AppPalette.brandDark,
-    onPrimary: AppPalette.neutral90,
+    onPrimary: AppPalette.white,
     scaffold: AppPalette.neutral90,
     surface: AppPalette.neutral80,
     border: AppPalette.neutral60,

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'app_update_response.dart';
@@ -9,6 +9,7 @@ part of 'app_update_response.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $AppUpdateResponseCopyWith<AppUpdateResponse> get copyWith => _$AppUpdateRespons
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppUpdateResponse&&(identical(other.code, code) || other.code == code)&&(identical(other.message, message) || other.message == message)&&(identical(other.error, error) || other.error == error)&&(identical(other.results, results) || other.results == results));
+  final _this = this as AppUpdateResponse;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppUpdateResponse&&(identical(other.code, _this.code) || other.code == _this.code)&&(identical(other.message, _this.message) || other.message == _this.message)&&(identical(other.error, _this.error) || other.error == _this.error)&&(identical(other.results, _this.results) || other.results == _this.results));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,code,message,error,results);
+int get hashCode {
+  final _this = this as AppUpdateResponse;
+  return Object.hash(runtimeType,_this.code,_this.message,_this.error,_this.results);
+}
 
 @override
 String toString() {
-  return 'AppUpdateResponse(code: $code, message: $message, error: $error, results: $results)';
+  final _this = this as AppUpdateResponse;
+  return 'AppUpdateResponse(code: ${_this.code}, message: ${_this.message}, error: ${_this.error}, results: ${_this.results})';
 }
 
 
@@ -66,7 +72,7 @@ class _$AppUpdateResponseCopyWithImpl<$Res>
 /// Create a copy of AppUpdateResponse
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? code = freezed,Object? message = freezed,Object? error = freezed,Object? results = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(AppUpdateResponse(
 code: freezed == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as int?,message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
@@ -245,16 +251,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppUpdateResponse&&(identical(other.code, code) || other.code == code)&&(identical(other.message, message) || other.message == message)&&(identical(other.error, error) || other.error == error)&&(identical(other.results, results) || other.results == results));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppUpdateResponse&&(identical(other.code, code) || other.code == code)&&(identical(other.message, message) || other.message == message)&&(identical(other.error, error) || other.error == error)&&(identical(other.results, results) || other.results == results));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,code,message,error,results);
+int get hashCode {
+    return Object.hash(runtimeType,code,message,error,results);
+}
 
 @override
 String toString() {
-  return 'AppUpdateResponse(code: $code, message: $message, error: $error, results: $results)';
+    return 'AppUpdateResponse(code: $code, message: $message, error: $error, results: $results)';
 }
 
 
@@ -324,16 +332,21 @@ $AppUpdateResultsCopyWith<AppUpdateResults> get copyWith => _$AppUpdateResultsCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppUpdateResults&&(identical(other.data, data) || other.data == data));
+  final _this = this as AppUpdateResults;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppUpdateResults&&(identical(other.data, _this.data) || other.data == _this.data));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,data);
+int get hashCode {
+  final _this = this as AppUpdateResults;
+  return Object.hash(runtimeType,_this.data);
+}
 
 @override
 String toString() {
-  return 'AppUpdateResults(data: $data)';
+  final _this = this as AppUpdateResults;
+  return 'AppUpdateResults(data: ${_this.data})';
 }
 
 
@@ -362,7 +375,7 @@ class _$AppUpdateResultsCopyWithImpl<$Res>
 /// Create a copy of AppUpdateResults
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? data = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(AppUpdateResults(
 data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as AppUpdateData?,
   ));
@@ -535,16 +548,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppUpdateResults&&(identical(other.data, data) || other.data == data));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppUpdateResults&&(identical(other.data, data) || other.data == data));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,data);
+int get hashCode {
+    return Object.hash(runtimeType,data);
+}
 
 @override
 String toString() {
-  return 'AppUpdateResults(data: $data)';
+    return 'AppUpdateResults(data: $data)';
 }
 
 
@@ -611,16 +626,21 @@ $AppUpdateDataCopyWith<AppUpdateData> get copyWith => _$AppUpdateDataCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppUpdateData&&(identical(other.updateStatus, updateStatus) || other.updateStatus == updateStatus)&&(identical(other.currentVersion, currentVersion) || other.currentVersion == currentVersion)&&(identical(other.latestVersion, latestVersion) || other.latestVersion == latestVersion)&&(identical(other.minSupportedVersion, minSupportedVersion) || other.minSupportedVersion == minSupportedVersion));
+  final _this = this as AppUpdateData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppUpdateData&&(identical(other.updateStatus, _this.updateStatus) || other.updateStatus == _this.updateStatus)&&(identical(other.currentVersion, _this.currentVersion) || other.currentVersion == _this.currentVersion)&&(identical(other.latestVersion, _this.latestVersion) || other.latestVersion == _this.latestVersion)&&(identical(other.minSupportedVersion, _this.minSupportedVersion) || other.minSupportedVersion == _this.minSupportedVersion));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,updateStatus,currentVersion,latestVersion,minSupportedVersion);
+int get hashCode {
+  final _this = this as AppUpdateData;
+  return Object.hash(runtimeType,_this.updateStatus,_this.currentVersion,_this.latestVersion,_this.minSupportedVersion);
+}
 
 @override
 String toString() {
-  return 'AppUpdateData(updateStatus: $updateStatus, currentVersion: $currentVersion, latestVersion: $latestVersion, minSupportedVersion: $minSupportedVersion)';
+  final _this = this as AppUpdateData;
+  return 'AppUpdateData(updateStatus: ${_this.updateStatus}, currentVersion: ${_this.currentVersion}, latestVersion: ${_this.latestVersion}, minSupportedVersion: ${_this.minSupportedVersion})';
 }
 
 
@@ -649,7 +669,7 @@ class _$AppUpdateDataCopyWithImpl<$Res>
 /// Create a copy of AppUpdateData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? updateStatus = freezed,Object? currentVersion = freezed,Object? latestVersion = freezed,Object? minSupportedVersion = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(AppUpdateData(
 updateStatus: freezed == updateStatus ? _self.updateStatus : updateStatus // ignore: cast_nullable_to_non_nullable
 as String?,currentVersion: freezed == currentVersion ? _self.currentVersion : currentVersion // ignore: cast_nullable_to_non_nullable
 as String?,latestVersion: freezed == latestVersion ? _self.latestVersion : latestVersion // ignore: cast_nullable_to_non_nullable
@@ -816,16 +836,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppUpdateData&&(identical(other.updateStatus, updateStatus) || other.updateStatus == updateStatus)&&(identical(other.currentVersion, currentVersion) || other.currentVersion == currentVersion)&&(identical(other.latestVersion, latestVersion) || other.latestVersion == latestVersion)&&(identical(other.minSupportedVersion, minSupportedVersion) || other.minSupportedVersion == minSupportedVersion));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppUpdateData&&(identical(other.updateStatus, updateStatus) || other.updateStatus == updateStatus)&&(identical(other.currentVersion, currentVersion) || other.currentVersion == currentVersion)&&(identical(other.latestVersion, latestVersion) || other.latestVersion == latestVersion)&&(identical(other.minSupportedVersion, minSupportedVersion) || other.minSupportedVersion == minSupportedVersion));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,updateStatus,currentVersion,latestVersion,minSupportedVersion);
+int get hashCode {
+    return Object.hash(runtimeType,updateStatus,currentVersion,latestVersion,minSupportedVersion);
+}
 
 @override
 String toString() {
-  return 'AppUpdateData(updateStatus: $updateStatus, currentVersion: $currentVersion, latestVersion: $latestVersion, minSupportedVersion: $minSupportedVersion)';
+    return 'AppUpdateData(updateStatus: $updateStatus, currentVersion: $currentVersion, latestVersion: $latestVersion, minSupportedVersion: $minSupportedVersion)';
 }
 
 

@@ -46,7 +46,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'No se pudo procesar la respuesta. Intenta de nuevo.';
 
   @override
-  String get errorInvalidCredentials => 'Usuario o contraseña inválidos';
+  String get errorInvalidCredentials => 'Correo o contraseña inválidos';
 
   @override
   String get errorRequestFailed => 'La solicitud falló. Intenta de nuevo.';
@@ -79,13 +79,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get loginTitle => 'Iniciar sesión';
 
   @override
-  String get loginUsernameLabel => 'Correo o usuario';
-
-  @override
   String get loginPasswordLabel => 'Contraseña';
-
-  @override
-  String get loginUsernameRequired => 'Ingresa tu correo o usuario';
 
   @override
   String get loginPasswordRequired => 'Ingresa tu contraseña';
@@ -94,7 +88,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get loginSubmit => 'Iniciar sesión';
 
   @override
-  String get loginInvalidCredentials => 'Usuario o contraseña inválidos';
+  String get loginInvalidCredentials => 'Correo o contraseña inválidos';
 
   @override
   String get homeTitle => 'Inicio';
@@ -146,4 +140,35 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get splashLaterAction => 'Más tarde';
+
+  @override
+  String get loginEmailLabel => 'Correo';
+
+  @override
+  String get loginEmailRequired => 'Ingresa tu correo';
+
+  @override
+  String get loginCreateAccount => 'Crear cuenta';
+
+  @override
+  String get registerTitle => 'Crear cuenta';
+
+  @override
+  String get registerNameLabel => 'Nombre';
+
+  @override
+  String get registerNameRequired => 'Ingresa tu nombre (mínimo 2 caracteres)';
+
+  @override
+  String get registerPasswordMin =>
+      'La contraseña debe tener al menos 8 caracteres';
+
+  @override
+  String get registerSubmit => 'Registrarse';
+
+  @override
+  String get registerHaveAccount => '¿Ya tienes cuenta? Inicia sesión';
+
+  @override
+  String get registerSuccess => 'Cuenta creada. Inicia sesión.';
 }

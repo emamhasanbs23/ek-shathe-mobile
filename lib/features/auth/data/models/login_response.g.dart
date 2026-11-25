@@ -8,32 +8,16 @@ part of 'login_response.dart';
 
 _LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
     _LoginResponse(
-      code: (json['code'] as num?)?.toInt(),
+      success: json['success'] as bool?,
       message: json['message'] as String?,
-      error: json['error'] as bool?,
-      results: json['results'] == null
+      data: json['data'] == null
           ? null
-          : LoginResults.fromJson(json['results'] as Map<String, dynamic>),
+          : AuthTokenData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$LoginResponseToJson(_LoginResponse instance) =>
     <String, dynamic>{
-      'code': instance.code,
+      'success': instance.success,
       'message': instance.message,
-      'error': instance.error,
-      'results': instance.results,
-    };
-
-_LoginResults _$LoginResultsFromJson(Map<String, dynamic> json) =>
-    _LoginResults(
-      data: json['data'] as String?,
-      refreshToken: json['refreshToken'] as String?,
-      isNewUser: json['isNewUser'] as bool?,
-    );
-
-Map<String, dynamic> _$LoginResultsToJson(_LoginResults instance) =>
-    <String, dynamic>{
       'data': instance.data,
-      'refreshToken': instance.refreshToken,
-      'isNewUser': instance.isNewUser,
     };

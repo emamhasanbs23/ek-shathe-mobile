@@ -27,8 +27,6 @@ class AppSize {
   static double get buttonHeight => 48.sp;
   static double get maxContentWidth => 480.w;
 
-  /// Splash branding — mirrors `activity_splash.xml`.
-  static double get splashIconHeight => 96.h;
-  static double get splashLogoHeight => 32.h;
-  static double get splashLogoBottomMargin => 40.h;
+  /// Splash mark size — aligns with native centered splash symbol.
+  static double get splashIconHeight => 192.h;
 }

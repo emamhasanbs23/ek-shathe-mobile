@@ -3,6 +3,7 @@ import 'package:ek_shathe_mobile/core/router/app_routes.dart';
 import 'package:ek_shathe_mobile/core/theme/app_size.dart';
 import 'package:ek_shathe_mobile/core/theme/theme_context_extension.dart';
 import 'package:ek_shathe_mobile/features/auth/presentation/login_page.dart';
+import 'package:ek_shathe_mobile/features/auth/presentation/register_page.dart';
 import 'package:ek_shathe_mobile/features/auth/presentation/riverpod/auth_providers.dart';
 import 'package:ek_shathe_mobile/features/home/presentation/home_page.dart';
 import 'package:ek_shathe_mobile/features/splash/presentation/riverpod/splash_providers.dart';
@@ -43,6 +44,11 @@ GoRouter appRouter(Ref ref) {
         name: AuthRoutes.login,
         builder: (_, _) => const LoginPage(),
       ),
+      GoRoute(
+        path: AppRoutePaths.register,
+        name: AuthRoutes.register,
+        builder: (_, _) => const RegisterPage(),
+      ),
     ],
     errorBuilder: (context, state) => UnknownRoutePage(error: state.error),
   );
@@ -63,14 +69,19 @@ String? authRedirect(
       ? splashState.isLoggedIn
       : (authAsync.value ?? splashState.isLoggedIn);
   final goingToLogin = matchedLocation == AppRoutePaths.login;
+  final goingToRegister = matchedLocation == AppRoutePaths.register;
   final onSplash = matchedLocation == AppRoutePaths.splash;
 
   if (onSplash) {
     return isLoggedIn ? AppRoutePaths.home : AppRoutePaths.login;
   }
 
-  if (!isLoggedIn && !goingToLogin) return AppRoutePaths.login;
-  if (isLoggedIn && goingToLogin) return AppRoutePaths.home;
+  if (!isLoggedIn && !goingToLogin && !goingToRegister) {
+    return AppRoutePaths.login;
+  }
+  if (isLoggedIn && (goingToLogin || goingToRegister)) {
+    return AppRoutePaths.home;
+  }
   return null;
 }
 

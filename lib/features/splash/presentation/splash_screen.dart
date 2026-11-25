@@ -15,12 +15,7 @@ class SplashScreen extends ConsumerStatefulWidget {
   ConsumerState<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends ConsumerState<SplashScreen>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _animationController;
-  late final Animation<double> _iconFade;
-  late final Animation<double> _iconScale;
-  late final Animation<double> _logoFade;
+class _SplashScreenState extends ConsumerState<SplashScreen> {
   SplashState? _lastHandledDialogState;
 
   @override
@@ -29,35 +24,6 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       unawaited(ref.read(splashControllerProvider.notifier).start());
     });
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1100),
-    );
-    _iconFade = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: const Interval(0, 0.55, curve: Curves.easeOut),
-      ),
-    );
-    _iconScale = Tween<double>(begin: 0.45, end: 1).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: const Interval(0, 0.85, curve: Curves.easeOutCubic),
-      ),
-    );
-    _logoFade = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: const Interval(0.5, 1, curve: Curves.easeOut),
-      ),
-    );
-    _animationController.forward();
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
   }
 
   @override
@@ -70,21 +36,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
         statusBarColor: Colors.transparent,
         systemNavigationBarColor: AppPalette.white,
       ),
-      child: Scaffold(
+      child: const Scaffold(
         backgroundColor: AppPalette.white,
-        body: SafeArea(
-          top: false,
-          child: AnimatedBuilder(
-            animation: _animationController,
-            builder: (context, _) {
-              return SplashBranding(
-                iconOpacity: _iconFade.value,
-                iconScale: _iconScale.value,
-                logoOpacity: _logoFade.value,
-              );
-            },
-          ),
-        ),
+        body: SplashBranding(),
       ),
     );
   }

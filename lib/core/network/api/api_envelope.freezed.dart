@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'api_envelope.dart';
@@ -9,13 +9,14 @@ part of 'api_envelope.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ApiEnvelope {
 
- int? get code; String? get message; bool? get error;
+ bool? get success; String? get message; List<dynamic> get errors;
 /// Create a copy of ApiEnvelope
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +29,21 @@ $ApiEnvelopeCopyWith<ApiEnvelope> get copyWith => _$ApiEnvelopeCopyWithImpl<ApiE
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ApiEnvelope&&(identical(other.code, code) || other.code == code)&&(identical(other.message, message) || other.message == message)&&(identical(other.error, error) || other.error == error));
+  final _this = this as ApiEnvelope;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ApiEnvelope&&(identical(other.success, _this.success) || other.success == _this.success)&&(identical(other.message, _this.message) || other.message == _this.message)&&const DeepCollectionEquality().equals(other.errors, _this.errors));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,code,message,error);
+int get hashCode {
+  final _this = this as ApiEnvelope;
+  return Object.hash(runtimeType,_this.success,_this.message,const DeepCollectionEquality().hash(_this.errors));
+}
 
 @override
 String toString() {
-  return 'ApiEnvelope(code: $code, message: $message, error: $error)';
+  final _this = this as ApiEnvelope;
+  return 'ApiEnvelope(success: ${_this.success}, message: ${_this.message}, errors: ${_this.errors})';
 }
 
 
@@ -48,7 +54,7 @@ abstract mixin class $ApiEnvelopeCopyWith<$Res>  {
   factory $ApiEnvelopeCopyWith(ApiEnvelope value, $Res Function(ApiEnvelope) _then) = _$ApiEnvelopeCopyWithImpl;
 @useResult
 $Res call({
- int? code, String? message, bool? error
+ bool? success, String? message, List<dynamic> errors
 });
 
 
@@ -65,12 +71,12 @@ class _$ApiEnvelopeCopyWithImpl<$Res>
 
 /// Create a copy of ApiEnvelope
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? code = freezed,Object? message = freezed,Object? error = freezed,}) {
-  return _then(_self.copyWith(
-code: freezed == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
-as int?,message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
-as bool?,
+@pragma('vm:prefer-inline') @override $Res call({Object? success = freezed,Object? message = freezed,Object? errors = null,}) {
+  return _then(ApiEnvelope(
+success: freezed == success ? _self.success : success // ignore: cast_nullable_to_non_nullable
+as bool?,message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String?,errors: null == errors ? _self.errors : errors // ignore: cast_nullable_to_non_nullable
+as List<dynamic>,
   ));
 }
 
@@ -155,10 +161,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? code,  String? message,  bool? error)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool? success,  String? message,  List<dynamic> errors)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ApiEnvelope() when $default != null:
-return $default(_that.code,_that.message,_that.error);case _:
+return $default(_that.success,_that.message,_that.errors);case _:
   return orElse();
 
 }
@@ -176,10 +182,10 @@ return $default(_that.code,_that.message,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? code,  String? message,  bool? error)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool? success,  String? message,  List<dynamic> errors)  $default,) {final _that = this;
 switch (_that) {
 case _ApiEnvelope():
-return $default(_that.code,_that.message,_that.error);case _:
+return $default(_that.success,_that.message,_that.errors);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +202,10 @@ return $default(_that.code,_that.message,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? code,  String? message,  bool? error)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool? success,  String? message,  List<dynamic> errors)?  $default,) {final _that = this;
 switch (_that) {
 case _ApiEnvelope() when $default != null:
-return $default(_that.code,_that.message,_that.error);case _:
+return $default(_that.success,_that.message,_that.errors);case _:
   return null;
 
 }
@@ -211,12 +217,18 @@ return $default(_that.code,_that.message,_that.error);case _:
 @JsonSerializable()
 
 class _ApiEnvelope implements ApiEnvelope {
-  const _ApiEnvelope({this.code, this.message, this.error});
+  const _ApiEnvelope({this.success, this.message,  List<dynamic> errors = const []}): _errors = errors;
   factory _ApiEnvelope.fromJson(Map<String, dynamic> json) => _$ApiEnvelopeFromJson(json);
 
-@override final  int? code;
+@override final  bool? success;
 @override final  String? message;
-@override final  bool? error;
+ final  List<dynamic> _errors;
+@override@JsonKey() List<dynamic> get errors {
+  if (_errors is EqualUnmodifiableListView) return _errors;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_errors);
+}
+
 
 /// Create a copy of ApiEnvelope
 /// with the given fields replaced by the non-null parameter values.
@@ -231,16 +243,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ApiEnvelope&&(identical(other.code, code) || other.code == code)&&(identical(other.message, message) || other.message == message)&&(identical(other.error, error) || other.error == error));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ApiEnvelope&&(identical(other.success, success) || other.success == success)&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other.errors, _errors));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,code,message,error);
+int get hashCode {
+    return Object.hash(runtimeType,success,message,const DeepCollectionEquality().hash(_errors));
+}
 
 @override
 String toString() {
-  return 'ApiEnvelope(code: $code, message: $message, error: $error)';
+    return 'ApiEnvelope(success: $success, message: $message, errors: $errors)';
 }
 
 
@@ -251,7 +265,7 @@ abstract mixin class _$ApiEnvelopeCopyWith<$Res> implements $ApiEnvelopeCopyWith
   factory _$ApiEnvelopeCopyWith(_ApiEnvelope value, $Res Function(_ApiEnvelope) _then) = __$ApiEnvelopeCopyWithImpl;
 @override @useResult
 $Res call({
- int? code, String? message, bool? error
+ bool? success, String? message, List<dynamic> errors
 });
 
 
@@ -268,12 +282,12 @@ class __$ApiEnvelopeCopyWithImpl<$Res>
 
 /// Create a copy of ApiEnvelope
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? code = freezed,Object? message = freezed,Object? error = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? success = freezed,Object? message = freezed,Object? errors = null,}) {
   return _then(_ApiEnvelope(
-code: freezed == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
-as int?,message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
-as bool?,
+success: freezed == success ? _self.success : success // ignore: cast_nullable_to_non_nullable
+as bool?,message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String?,errors: null == errors ? _self._errors : errors // ignore: cast_nullable_to_non_nullable
+as List<dynamic>,
   ));
 }
 

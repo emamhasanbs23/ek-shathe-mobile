@@ -1,4 +1,3 @@
-import 'package:ek_shathe_mobile/core/config/flavor_providers.dart';
 import 'package:ek_shathe_mobile/core/router/app_router.dart';
 import 'package:ek_shathe_mobile/core/theme/app_theme.dart';
 import 'package:ek_shathe_mobile/core/widgets/connectivity_banner.dart';
@@ -14,7 +13,6 @@ class App extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(appRouterProvider);
-    final config = ref.watch(flavorConfigProvider);
     final splashReady = ref.watch(splashControllerProvider).isReady;
 
     return ScreenUtilInit(
@@ -23,7 +21,7 @@ class App extends ConsumerWidget {
       builder: (context, child) {
         return MaterialApp.router(
           onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
-          debugShowCheckedModeBanner: !config.isProd,
+          debugShowCheckedModeBanner: false,
           theme: AppTheme.light(),
           darkTheme: AppTheme.dark(),
           themeMode: ThemeMode.light,

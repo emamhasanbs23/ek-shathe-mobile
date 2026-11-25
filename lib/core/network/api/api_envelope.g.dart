@@ -7,14 +7,14 @@ part of 'api_envelope.dart';
 // **************************************************************************
 
 _ApiEnvelope _$ApiEnvelopeFromJson(Map<String, dynamic> json) => _ApiEnvelope(
-  code: (json['code'] as num?)?.toInt(),
+  success: json['success'] as bool?,
   message: json['message'] as String?,
-  error: json['error'] as bool?,
+  errors: json['errors'] as List<dynamic>? ?? const [],
 );
 
 Map<String, dynamic> _$ApiEnvelopeToJson(_ApiEnvelope instance) =>
     <String, dynamic>{
-      'code': instance.code,
+      'success': instance.success,
       'message': instance.message,
-      'error': instance.error,
+      'errors': instance.errors,
     };

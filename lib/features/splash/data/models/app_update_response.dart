@@ -1,13 +1,10 @@
-import 'package:ek_shathe_mobile/core/network/api/api_envelope.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'app_update_response.freezed.dart';
 part 'app_update_response.g.dart';
 
 @freezed
-abstract class AppUpdateResponse
-    with _$AppUpdateResponse
-    implements ApiResponse {
+abstract class AppUpdateResponse with _$AppUpdateResponse {
   const factory AppUpdateResponse({
     int? code,
     String? message,

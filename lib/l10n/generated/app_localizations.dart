@@ -173,7 +173,7 @@ abstract class AppLocalizations {
   /// No description provided for @errorInvalidCredentials.
   ///
   /// In en, this message translates to:
-  /// **'Invalid username or password'**
+  /// **'Invalid email or password'**
   String get errorInvalidCredentials;
 
   /// No description provided for @errorRequestFailed.
@@ -230,23 +230,11 @@ abstract class AppLocalizations {
   /// **'Sign in'**
   String get loginTitle;
 
-  /// No description provided for @loginUsernameLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Email or username'**
-  String get loginUsernameLabel;
-
   /// No description provided for @loginPasswordLabel.
   ///
   /// In en, this message translates to:
   /// **'Password'**
   String get loginPasswordLabel;
-
-  /// No description provided for @loginUsernameRequired.
-  ///
-  /// In en, this message translates to:
-  /// **'Enter your email or username'**
-  String get loginUsernameRequired;
 
   /// No description provided for @loginPasswordRequired.
   ///
@@ -263,7 +251,7 @@ abstract class AppLocalizations {
   /// No description provided for @loginInvalidCredentials.
   ///
   /// In en, this message translates to:
-  /// **'Invalid username or password'**
+  /// **'Invalid email or password'**
   String get loginInvalidCredentials;
 
   /// No description provided for @homeTitle.
@@ -361,6 +349,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Later'**
   String get splashLaterAction;
+
+  /// Email field label on login/register
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get loginEmailLabel;
+
+  /// Email required validation
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email'**
+  String get loginEmailRequired;
+
+  /// Link from login to register
+  ///
+  /// In en, this message translates to:
+  /// **'Create account'**
+  String get loginCreateAccount;
+
+  /// No description provided for @registerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create account'**
+  String get registerTitle;
+
+  /// No description provided for @registerNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get registerNameLabel;
+
+  /// No description provided for @registerNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your name (at least 2 characters)'**
+  String get registerNameRequired;
+
+  /// No description provided for @registerPasswordMin.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters'**
+  String get registerPasswordMin;
+
+  /// No description provided for @registerSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up'**
+  String get registerSubmit;
+
+  /// No description provided for @registerHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account? Sign in'**
+  String get registerHaveAccount;
+
+  /// No description provided for @registerSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Account created. Please sign in.'**
+  String get registerSuccess;
 }
 
 class _AppLocalizationsDelegate

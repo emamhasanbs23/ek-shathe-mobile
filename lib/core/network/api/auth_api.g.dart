@@ -8,6 +8,7 @@ part of 'auth_api.dart';
 // RetrofitGenerator
 // **************************************************************************
 
+// ignore_for_file: type=lint
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main,avoid_redundant_argument_values
 
 class _AuthApi implements AuthApi {
@@ -20,6 +21,38 @@ class _AuthApi implements AuthApi {
   final ParseErrorLogger? errorLogger;
 
   @override
+  Future<RegisterResponse> register(
+    RegisterRequest request, {
+    CancelToken? cancelToken,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _options = _setStreamType<RegisterResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/v1/auth/register',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late RegisterResponse _value;
+    try {
+      _value = RegisterResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<LoginResponse> login(
     LoginRequest request, {
     CancelToken? cancelToken,
@@ -28,12 +61,13 @@ class _AuthApi implements AuthApi {
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = request;
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
     final _options = _setStreamType<LoginResponse>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/auth/login-or-register',
+            '/api/v1/auth/login',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -51,7 +85,7 @@ class _AuthApi implements AuthApi {
   }
 
   @override
-  Future<RefreshTokenResponse> refresh(
+  Future<LoginResponse> refresh(
     RefreshTokenRequest request, {
     Options? options,
     CancelToken? cancelToken,
@@ -60,7 +94,8 @@ class _AuthApi implements AuthApi {
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = request;
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
     final newOptions = newRequestOptions(options);
     newOptions.extra.addAll(_extra);
     newOptions.headers.addAll(_dio.options.headers);
@@ -69,12 +104,12 @@ class _AuthApi implements AuthApi {
       method: 'POST',
       baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
       queryParameters: queryParameters,
-      path: '/api/login/refreshtoken',
+      path: '/api/v1/auth/refresh',
     )..data = _data;
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late RefreshTokenResponse _value;
+    late LoginResponse _value;
     try {
-      _value = RefreshTokenResponse.fromJson(_result.data!);
+      _value = LoginResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -83,26 +118,31 @@ class _AuthApi implements AuthApi {
   }
 
   @override
-  Future<UserMeResponse> getMe({CancelToken? cancelToken}) async {
+  Future<LogoutResponse> logout(
+    LogoutRequest request, {
+    Options? options,
+    CancelToken? cancelToken,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<UserMeResponse>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/api/users/me',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final newOptions = newRequestOptions(options);
+    newOptions.extra.addAll(_extra);
+    newOptions.headers.addAll(_dio.options.headers);
+    newOptions.headers.addAll(_headers);
+    final _options = newOptions.copyWith(
+      method: 'POST',
+      baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+      queryParameters: queryParameters,
+      path: '/api/v1/auth/logout',
+    )..data = _data;
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late UserMeResponse _value;
+    late LogoutResponse _value;
     try {
-      _value = UserMeResponse.fromJson(_result.data!);
+      _value = LogoutResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -122,7 +162,7 @@ class _AuthApi implements AuthApi {
         extra: options.extra,
         headers: options.headers,
         responseType: options.responseType,
-        contentType: options.contentType.toString(),
+        contentType: options.contentType?.toString(),
         validateStatus: options.validateStatus,
         receiveDataWhenStatusError: options.receiveDataWhenStatusError,
         followRedirects: options.followRedirects,

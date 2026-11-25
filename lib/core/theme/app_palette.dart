@@ -2,11 +2,17 @@ import 'package:material_ui/material_ui.dart';
 
 /// Raw palette — tweak brand and neutrals here only.
 abstract final class AppPalette {
-  /// Splash progress indicator tint.
-  static const progressTint = Color(0xFF723DA7);
+  /// Splash progress indicator tint (brand orange).
+  static const progressTint = Color(0xFFFF7900);
 
-  static const brand = Color(0xFF723DA7);
-  static const brandDark = Color(0xFF9A82DB);
+  /// Primary navy.
+  static const brand = Color(0xFF0B2455);
+
+  /// Accent orange (also usable as secondary emphasis).
+  static const accent = Color(0xFFFF7900);
+
+  /// Dark-theme primary stays navy for brand consistency.
+  static const brandDark = Color(0xFF0B2455);
 
   static const white = Color(0xFFFFFFFF);
   static const black = Color(0xFF000000);

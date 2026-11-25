@@ -16,12 +16,12 @@ class LoginPage extends ConsumerStatefulWidget {
 
 class _LoginPageState extends ConsumerState<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
   @override
   void dispose() {
-    _usernameController.dispose();
+    _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -33,7 +33,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     final success = await ref
         .read(loginControllerProvider.notifier)
         .submit(
-          username: _usernameController.text.trim(),
+          email: _emailController.text.trim(),
           password: _passwordController.text,
         );
 
@@ -67,7 +67,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               constraints: BoxConstraints(maxWidth: AppSize.maxContentWidth),
               child: LoginFormWidget(
                 formKey: _formKey,
-                usernameController: _usernameController,
+                emailController: _emailController,
                 passwordController: _passwordController,
                 isSubmitting: isSubmitting,
                 onSubmit: _submit,

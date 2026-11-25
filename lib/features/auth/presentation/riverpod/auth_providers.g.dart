@@ -132,6 +132,48 @@ final class LoginUseCaseProvider
 
 String _$loginUseCaseHash() => r'24ad3f2ba64f0eabe574926ed647b61cd5651291';
 
+@ProviderFor(registerUseCase)
+final registerUseCaseProvider = RegisterUseCaseProvider._();
+
+final class RegisterUseCaseProvider
+    extends
+        $FunctionalProvider<RegisterUseCase, RegisterUseCase, RegisterUseCase>
+    with $Provider<RegisterUseCase> {
+  RegisterUseCaseProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'registerUseCaseProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$registerUseCaseHash();
+
+  @$internal
+  @override
+  $ProviderElement<RegisterUseCase> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  RegisterUseCase create(Ref ref) {
+    return registerUseCase(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(RegisterUseCase value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<RegisterUseCase>(value),
+    );
+  }
+}
+
+String _$registerUseCaseHash() => r'6701190a7912dee5f1d2da08527815d3303f1804';
+
 @ProviderFor(getCurrentUserUseCase)
 final getCurrentUserUseCaseProvider = GetCurrentUserUseCaseProvider._();
 
@@ -257,7 +299,7 @@ final class CurrentUserProvider
   }
 }
 
-String _$currentUserHash() => r'fa244603a7d92aef91ded8a57b73a28d3f078e57';
+String _$currentUserHash() => r'7e9865728746141f0bd508d9265f9deabc76b0f4';
 
 @ProviderFor(isAuthenticated)
 final isAuthenticatedProvider = IsAuthenticatedProvider._();
@@ -290,7 +332,7 @@ final class IsAuthenticatedProvider
   }
 }
 
-String _$isAuthenticatedHash() => r'ad8c9dba7c8a3d74b8eb1dce58b849c1d63d06f3';
+String _$isAuthenticatedHash() => r'2456aa55b85705a1f404ba97241acfe6f8abe3cf';
 
 @ProviderFor(LoginController)
 final loginControllerProvider = LoginControllerProvider._();
@@ -324,7 +366,7 @@ final class LoginControllerProvider
   }
 }
 
-String _$loginControllerHash() => r'27bd76badba8fe574620b5f7f24325011200f91c';
+String _$loginControllerHash() => r'7458789b992faf8e52f8ebe35cf8489d4e3c54e9';
 
 abstract class _$LoginController extends $Notifier<LoginState> {
   LoginState build();
@@ -337,6 +379,59 @@ abstract class _$LoginController extends $Notifier<LoginState> {
             as $ClassProviderElement<
               AnyNotifier<LoginState, LoginState>,
               LoginState,
+              Object?,
+              Object?
+            >;
+    return element.handleCreate(ref, build);
+  }
+}
+
+@ProviderFor(RegisterController)
+final registerControllerProvider = RegisterControllerProvider._();
+
+final class RegisterControllerProvider
+    extends $NotifierProvider<RegisterController, RegisterState> {
+  RegisterControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'registerControllerProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$registerControllerHash();
+
+  @$internal
+  @override
+  RegisterController create() => RegisterController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(RegisterState value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<RegisterState>(value),
+    );
+  }
+}
+
+String _$registerControllerHash() =>
+    r'709b673beb9456eafa470ede954994ea56270ea9';
+
+abstract class _$RegisterController extends $Notifier<RegisterState> {
+  RegisterState build();
+  @$mustCallSuper
+  @override
+  WhenComplete runBuild() {
+    final ref = this.ref as $Ref<RegisterState, RegisterState>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<RegisterState, RegisterState>,
+              RegisterState,
               Object?,
               Object?
             >;

@@ -25,21 +25,25 @@ class SplashRepositoryImpl implements SplashRepository {
     required int buildNumber,
   }) async {
     try {
-      final response = await guardApi(
+      // Config/update API is not on Ek-Shathe backend yet — treat failures as
+      // "no update required" so splash can proceed to auth.
+      final response = await guard(
         'SplashRepository.checkAppUpdate',
         () => _api.checkAppUpdate(platform: platform, version: buildNumber),
       );
       return Right(response.results?.data);
     } on Failure catch (failure) {
-      AppLogger.w('SplashRepository.checkAppUpdate failed: ${failure.message}');
-      return Left(failure);
+      AppLogger.w(
+        'SplashRepository.checkAppUpdate skipped: ${failure.message}',
+      );
+      return const Right(null);
     } on Object catch (error, stackTrace) {
       AppLogger.e(
         'SplashRepository.checkAppUpdate failed',
         error: error,
         stackTrace: stackTrace,
       );
-      return const Left(UnexpectedFailure());
+      return const Right(null);
     }
   }
 
